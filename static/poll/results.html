@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>3D bar chart - TELSTRA </title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/reset.css">
+<link rel="stylesheet" href="/static/css/scenes.css">
+</head>
+<body>
+<div id="valuelabel">
+</div>
+<div id="div-legend">
+<h4>Chart Title</h4>
+</div>
+<div id="preview-footer">
+Powered by <a href="http://rackandpin.com" target="_blank">Rack&amp;Pin</a>
+</div>
+</body>
+<script type="text/javascript">
+chartType = "bar";
+loadType = "sample";
+</script>
+<script type="text/javascript" src="/static/js/settings.js"></script>
+<script type="text/javascript">
+staticUrl = "/static/";
+chartTitle = "TELSTRA "
+</script>
+<script type="text/javascript">schema = {"cols":[{"name":"VOTES","color":"7cfc00"}],"rows":[{"name":"OPTION A"},{"name":"OPTION B"},{"name":"OPTION C"},{"name":"OPTION D"},{"name":"OPTION E"}]}; dataValues = [[98,59,460,699,520]]; </script>
+<script type="text/javascript" src="/static/js/libs/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="/static/js/libs/three.min.js"></script>
+<script type="text/javascript" src="/static/js/classes/TrackballControls.js"></script>
+<script type="text/javascript" src="/static/js/classes/TrackballControlsTouch.js"></script>
+<script type="text/javascript" src="/static/js/utils.js"></script>
+<script type="text/javascript" src="/static/js/classes/NiceScale.js"></script>
+<script type="text/javascript" src="/static/js/classes/BarCubes.js"></script>
+<script type="text/javascript" src="/static/js/classes/ScaleTexts.js"></script>
+<script type="text/javascript" src="/static/fonts/helvetiker_bold.typeface.js"></script>
+<script type="text/javascript" src="/static/js/scenes/scene_bar.js"></script>
+<script type="text/javascript">
+    
+    valHeight=1000;backColor='000000';scaleTextColor='ffffff';pieHeight=150;countryFocus="Libya";valTextColor='ffffff';
+    
+  </script>
+<script src="/static/js/init_embed.js" type="text/javascript"></script>
+<script src="main.js"></script>
+<canvas width="937" height="425"></canvas>
+</html>
