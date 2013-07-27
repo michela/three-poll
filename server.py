@@ -5,8 +5,9 @@ import tornado.web
 import re
 
 class WSHandler(tornado.websocket.WebSocketHandler):
+    """Websocket server for receiving votes from modprods poll client"""
     def open(self):
-        print 'new connection'
+#        print 'new connection'
         self.write_message("%s: hello " % ('poll.modprods.com'))
       
     def on_message(self, message):
