@@ -5,7 +5,7 @@ $(function () {
     "use strict";
     $(document).ready(function () {
 
-        var ws, option, i, o, host = "10.1.1.24", port = "8888", uri = '/ws', schema;
+        var ws, option, i, o, host = "poll.modprods.com", port = "8888", uri = '/ws', schema;
         ws = new WebSocket("ws://" + host + ":" + port + uri);
         
         ws.onmessage = function (evt) {

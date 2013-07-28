@@ -181,7 +181,7 @@ function initWebGLScene () {
   var yStep = valHeight/niceScale.tickNum;
   for ( var i=0; i<=niceScale.tickNum; i++ ) {
     var val = niceScale.niceMin + i*niceScale.tickSpacing;
-    var stringVal = val.toString();
+    var stringVal = val.toPrecision(2).toString();
     sTextVals[i] = new ScaleText(stringVal, "val", i, scaleTextColor, yStep);
     sTextVals[i].addText(groundZ);
   }

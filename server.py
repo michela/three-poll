@@ -2,9 +2,11 @@ import tornado.httpserver
 import tornado.websocket
 import tornado.ioloop
 import tornado.web
+import tornado.options
 import re
 import logging
 import json
+import os
 
 class Poll:
 
@@ -33,6 +35,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 #        print 'new connection'
 	WSHandler.waiters.add(self)
         self.write_message("%s: hello " % ('poll.modprods.com'))
+	self.broadcast_results()
 
     def broadcast_results(self):
         for waiter in self.waiters:
@@ -73,7 +76,10 @@ application = tornado.web.Application([
  
  
 if __name__ == "__main__":
+    tornado.options.parse_config_file(os.path.join(os.path.dirname(__file__), \
+                                                   "local_settings.py"))
     http_server = tornado.httpserver.HTTPServer(application)
     http_server.listen(8888)
     tornado.ioloop.IOLoop.instance().start()
+#    print("three-poll listening on 8888")
 
