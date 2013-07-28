@@ -1,42 +1,28 @@
-html {
-    background-color: #eeeeee;
-    background-image: linear-gradient(bottom, rgb(238,238,238) 18%, rgb(153,153,153) 59%, rgb(238,238,238) 80%);
-    background-image: -o-linear-gradient(bottom, rgb(238,238,238) 18%, rgb(153,153,153) 59%, rgb(238,238,238) 80%);
-    background-image: -moz-linear-gradient(bottom, rgb(238,238,238) 18%, rgb(153,153,153) 59%, rgb(238,238,238) 80%);
-    background-image: -webkit-linear-gradient(bottom, rgb(238,238,238) 18%, rgb(153,153,153) 59%, rgb(238,238,238) 80%);
-    background-image: -ms-linear-gradient(bottom, rgb(238,238,238) 18%, rgb(153,153,153) 59%, rgb(238,238,238) 80%);
+button {
+    background: #ffffff;
+    display: inline-block;
+    width: 100%;
+    min-width:100%;
+    height: 20%;
+    -webkit-appearance: none; 
+/*    padding: 0 20px; width: 100%; height: 100%; vertical-align: middle; */
+}
+img {
+    width: 99%;
+    min-width:99%;
+    padding-top: 4px;
+    vertical-align:center;
+}
+input {
+    display: inline-block;
+    padding-top:2em;
+    font-size: 2em;
+    width:100%;
 }
 
-body {
-    margin: 0 auto;
-    padding: 2em;
-    max-width: 800px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.5em;
-    color: #333333;
-    background-color: #ffffff;
-    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-}
 
-h1, h2, h3, h4, h5, h6 {
-    line-height: 1.3em;
-}
-
-samp
-{
-    /* hide <samp> from the browser so we can show cool features in Edge Code */
-    display: none;
-}
-
-img
-{
-    background: dimgray;
-    border: 1px solid black;
-    border-radius: 2px;
-    padding: 15px 10px 10px;
-    margin: 10px 0;
-    max-width: 95%;
+screen {
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
