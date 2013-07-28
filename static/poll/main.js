@@ -1,21 +1,41 @@
-/*globals $, document, WebSocket */
+/*globals $, document, WebSocket, initScene, animateScene, toString, dataValues */
 /*jslint devel: true */
 
 $(function () {
     "use strict";
     $(document).ready(function () {
 
-        var ws, host = "10.1.1.24", port = "8888", uri = '/ws';
-
+        var ws, option, i, o, host = "10.1.1.24", port = "8888", uri = '/ws', schema;
         ws = new WebSocket("ws://" + host + ":" + port + uri);
-
-        ws.onmessage = function (evt) {console.log("server: " + evt.data); };
+        
+        ws.onmessage = function (evt) {
+            console.log("server: " + evt.data);
+            var data = $.parseJSON(evt.data);
+            console.log(data.status);
+            if (data.status === "ok") {
+                console.log("receipt: " + data.status);
+                $(option).css("background", "#00ff00");
+                if (data.latest) {
+                    if (document.title === "modprods poll results") {
+                        console.log(dataValues);
+                        o = data.latest[0];
+                        dataValues = [[o[0], o[1], o[2], o[3], o[4]]];
+                        initScene();
+                    }
+                }
+            } else if (data.status === 'nok') {
+                console.log("receipt: " + data.status);
+                $(option).css("background", "#ff0000");
+            } else {
+                ws = new WebSocket("ws://" + host + ":" + port + uri);
+            }
+        };
 
         ws.onclose = function (evt) { console.log("Connection close"); };
 
         ws.onopen = function (evt) {
         };
-        
+             
         document.ontouchmove = function (e) {
             e.stopPropagation();
         };
@@ -24,19 +44,8 @@ $(function () {
             console.log("clicked (" + $(this).attr('id') + ")");
             $("button").css("background", "#ffffff");
             $("#text").css("background", "#ffffff");
-            var option = "#" + $(this).attr('id'), ok = false;
+            option = "#" + $(this).attr('id');
             ws.send("/vote/" + $(this).attr('id'));
-            ws.onmessage = function (evt) {
-                if (evt.data === "ok") {
-                    console.log("receipt: " + evt.data);
-                    $(option).css("background", "#00ff00");
-                    ok = true;
-                }
-            };
-            if (ok !== true) {
-                $(option).css("background", "#000000");
-                ws = new WebSocket("ws://" + host + ":" + port + uri);
-            }
         });
         
         $("#theForm").submit(function () {
@@ -44,18 +53,6 @@ $(function () {
             $("button").css("background", "#ffffff");
             $("#text").css("background", "#ffffff");
             ws.send("/message/" + $("#text").attr("value"));
-            var ok = false;
-            ws.onmessage = function (evt) {
-                if (evt.data === "ok") {
-                    console.log("receipt: " + evt.data);
-                    $("#text").css("background", "#00ff00");
-                    ok = true;
-                }
-            };
-            if (ok !== true) {
-                $("#text").css("background", "#000000");
-                ws = new WebSocket("ws://" + host + ":" + port + uri);
-            }
             return false;
         });
 
