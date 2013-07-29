@@ -34,7 +34,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
 #        print 'new connection'
 	WSHandler.waiters.add(self)
-        self.write_message("%s: hello " % ('poll.modprods.com'))
+#        self.write_message("%s: hello " % ('poll.modprods.com'))
 	self.broadcast_results()
 
     def broadcast_results(self):
@@ -42,7 +42,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		try:
 			results = self.poll.results()
 			msg = {'status':'ok' ,'latest':[results]}
-			waiter.write_message('Content-type:application/json\n') 
+#			waiter.write_message('Content-type:application/json\n') 
 			waiter.write_message(json.dumps(msg))
 		except:
 			logging.error("Error sending message", exc_info=True)
